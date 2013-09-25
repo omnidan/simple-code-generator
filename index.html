@@ -1,65 +1,217 @@
-<!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Simple Code Generator (SCG) : generates code automatically from models designed in a very simple language (or from C/C++ structs/classes, whichever syntax you prefer). This is based entirely on the approach of model-based-programming and saves a lot of time while keeping the code cleaner." />
 
-  <title>Simple Code Generator (SCG)</title>
-  <meta name="description" content="Simple Code Generator (SCG) generates code automatically from models written in a very simple syntax (or from C/C++ structs/classes). This is based entirely on the approach of model-based-programming and saves a lot of time by generating code that is always similar anyway.">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Simple Code Generator (SCG)</title>
+  </head>
 
-</head>
+  <body>
 
-<body>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/omnidan/simple-code-generator">View on GitHub</a>
 
-  <div class="wrapper">
-    <header>
-      <h1 class="title">Simple Code Generator (SCG)</h1>
-    </header>
-    <div id="container">
-      <p class="tagline">Simple Code Generator (SCG) generates code automatically from models written in a very simple syntax (or from C/C++ structs/classes). This is based entirely on the approach of model-based-programming and saves a lot of time by generating code that is always similar anyway.</p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/omnidan/simple-code-generator/tarball/master" class="download-button tar"><span>Download</span></a>
-          <a href="https://github.com/omnidan/simple-code-generator/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/omnidan/simple-code-generator" class="code">View Simple Code Generator (SCG) on GitHub</a>
-        </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h1>
-<a name="simple-code-generator" class="anchor" href="#simple-code-generator"><span class="octicon octicon-link"></span></a>simple-code-generator</h1>
+          <h1 id="project_title">Simple Code Generator (SCG)</h1>
+          <h2 id="project_tagline">generates code automatically from models designed in a very simple language (or from C/C++ structs/classes, whichever syntax you prefer). This is based entirely on the approach of model-based-programming and saves a lot of time while keeping the code cleaner.</h2>
 
-<p>Simple Code Generator (SCG) generates code automatically from models written in a very simple syntax (or from C/C++ structs/classes). This is based entirely on the approach of model-based-programming and saves a lot of time by generating code that is always similar anyway.</p>
-        </article>
-      </div>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/omnidan/simple-code-generator/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/omnidan/simple-code-generator/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
     </div>
-    <footer>
-      <div class="owner">
-      <p><a href="https://github.com/omnidan" class="avatar"><img src="https://2.gravatar.com/avatar/6aef44154244dcabdb8ed0a24fec23d3?d=https%3A%2F%2Fidenticons.github.com%2F05fa4b4f58a6eec31cd407fa730650e4.png&amp;s=30" width="48" height="48"/></a> <a href="https://github.com/omnidan">omnidan</a> maintains <a href="https://github.com/omnidan/simple-code-generator">Simple Code Generator (SCG)</a></p>
 
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="basic-syntax" class="anchor" href="#basic-syntax"><span class="octicon octicon-link"></span></a>Basic syntax</h1>
 
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/omnidan/simple-code-generator/tarball/master" class="tar">tar</a><a href="https://github.com/omnidan/simple-code-generator/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
+<h2>
+<a name="simple-model-file-smf---structure" class="anchor" href="#simple-model-file-smf---structure"><span class="octicon octicon-link"></span></a>Simple Model File (SMF) - Structure</h2>
 
-  
-</body>
+<pre><code>(model|class|struct) &lt;modelname&gt;:
+    &lt;type&gt; &lt;parameter&gt;
+</code></pre>
+
+<h2>
+<a name="syntax-types" class="anchor" href="#syntax-types"><span class="octicon octicon-link"></span></a>Syntax types</h2>
+
+<p><code>model</code> sets the syntax type to the default model.</p>
+
+<p><code>struct</code> sets the syntax type to C-like-struct-model, which requires usage of semicolons and { }.</p>
+
+<p><code>class</code> is basically an alias for struct, but used in C++-like-class-models.</p>
+
+<p>Later, there will be a library to use these C++ and C models in actual C/C++ code.</p>
+
+<h2>
+<a name="optional-parts-of-the-style" class="anchor" href="#optional-parts-of-the-style"><span class="octicon octicon-link"></span></a>Optional parts of the style</h2>
+
+<p>Spacing, indentation, semicolon after parameter</p>
+
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<h3>
+<a name="model-simple" class="anchor" href="#model-simple"><span class="octicon octicon-link"></span></a>Model (Simple)</h3>
+
+<pre><code>model School:
+    string location
+    int teacher_count
+    int pupils_count
+</code></pre>
+
+<h3>
+<a name="struct-c" class="anchor" href="#struct-c"><span class="octicon octicon-link"></span></a>Struct (C)</h3>
+
+<pre><code>struct School {
+    string location;
+    int teacher_count;
+    int pupils_count;
+};
+</code></pre>
+
+<p>(should work in C when you define string)</p>
+
+<h3>
+<a name="class-c" class="anchor" href="#class-c"><span class="octicon octicon-link"></span></a>Class (C++)</h3>
+
+<pre><code>class School {
+    string location;
+    int teacher_count;
+    int pupils_count;
+};
+</code></pre>
+
+<p>(should work in C++ when you specify <code>using namespace std;</code>)</p>
+
+<h1>
+<a name="advanced-syntax" class="anchor" href="#advanced-syntax"><span class="octicon octicon-link"></span></a>Advanced syntax</h1>
+
+<h2>
+<a name="arrays" class="anchor" href="#arrays"><span class="octicon octicon-link"></span></a>Arrays</h2>
+
+<h3>
+<a name="structure" class="anchor" href="#structure"><span class="octicon octicon-link"></span></a>Structure</h3>
+
+<pre><code>&lt;type&gt; (array|list) &lt;parameter&gt;
+or
+(array|list) &lt;type&gt; &lt;parameter&gt;
+or
+[]
+</code></pre>
+
+<h3>
+<a name="optional-parts-of-the-style-1" class="anchor" href="#optional-parts-of-the-style-1"><span class="octicon octicon-link"></span></a>Optional parts of the style</h3>
+
+<p>Spacing</p>
+
+<p>[] can be suffix/prefix of type or parameter</p>
+
+<p>array must be prefix/suffix of the type</p>
+
+<p>Instead of using the array or list, you can also append an "s" to the type. For example: Teachers loads an array of the model Teacher.</p>
+
+<h3>
+<a name="examples-1" class="anchor" href="#examples-1"><span class="octicon octicon-link"></span></a>Examples</h3>
+
+<h4>
+<a name="model-simple-1" class="anchor" href="#model-simple-1"><span class="octicon octicon-link"></span></a>Model (Simple)</h4>
+
+<pre><code>model School:
+    string location
+    string array teacher_names
+    int pupils_count
+</code></pre>
+
+<h4>
+<a name="struct-c-1" class="anchor" href="#struct-c-1"><span class="octicon octicon-link"></span></a>Struct (C)</h4>
+
+<pre><code>struct School {
+    string location;
+    string teachers[];
+    int pupils_count;
+};
+</code></pre>
+
+<h4>
+<a name="class-c-1" class="anchor" href="#class-c-1"><span class="octicon octicon-link"></span></a>Class (C++)</h4>
+
+<pre><code>struct School {
+    string location;
+    string teachers[];
+    int pupils_count;
+};
+</code></pre>
+
+<h2>
+<a name="imports" class="anchor" href="#imports"><span class="octicon octicon-link"></span></a>Imports</h2>
+
+<h3>
+<a name="syntax" class="anchor" href="#syntax"><span class="octicon octicon-link"></span></a>Syntax</h3>
+
+<pre><code>import &lt;modelname&gt;
+</code></pre>
+
+<h3>
+<a name="optional-parts-of-the-style-2" class="anchor" href="#optional-parts-of-the-style-2"><span class="octicon octicon-link"></span></a>Optional parts of the style</h3>
+
+<p>Semicolon after parameter, C/C++-like function</p>
+
+<h3>
+<a name="examples-2" class="anchor" href="#examples-2"><span class="octicon octicon-link"></span></a>Examples</h3>
+
+<h4>
+<a name="model-simple-2" class="anchor" href="#model-simple-2"><span class="octicon octicon-link"></span></a>Model (Simple)</h4>
+
+<pre><code>import Teacher
+model School:
+    string location
+    Teachers teachers
+    int pupils_count
+</code></pre>
+
+<h4>
+<a name="struct-c-2" class="anchor" href="#struct-c-2"><span class="octicon octicon-link"></span></a>Struct (C)</h4>
+
+<pre><code>import("Teacher");
+struct School {
+    string location;
+    Teacher teachers[];
+    int pupils_count;
+};
+</code></pre>
+
+<h4>
+<a name="class-c-2" class="anchor" href="#class-c-2"><span class="octicon octicon-link"></span></a>Class (C++)</h4>
+
+<pre><code>import("Teacher");
+struct School {
+    string location;
+    Teacher teachers[];
+    int pupils_count;
+};
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Simple Code Generator (SCG) maintained by <a href="https://github.com/omnidan">omnidan</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
 </html>
