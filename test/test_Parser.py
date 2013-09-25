@@ -1,7 +1,7 @@
 from SMF import SMFParser
 
 
-class TestSMFParser:
+class TestSMFParser(object):
     def test_name(self):
         assert self.result.model_name == "School"
 
@@ -18,10 +18,11 @@ class TestSMFParser:
         assert self.result.parameters[1].parameter_name == "pupils_count"
 
     def __init__(self):
-        self.parser = SMFParser(r"""
+        self.document = r"""
 model School:
     string location
     int pupils_count
     int teacher_count
-        """)
+        """
+        self.parser = SMFParser(self.document)
         self.result = self.parser.getResult()

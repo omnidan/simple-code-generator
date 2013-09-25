@@ -54,6 +54,8 @@ class SMFParser:
                                     model_name = part
                                     if model_name[-1] == ":":
                                         model_name = model_name[:-1]
+                                    if model_name[-1] == "{":
+                                        model_name = model_name[:-1]
                                     in_model_name = False
                                     in_parameter_list = True
 
@@ -71,6 +73,8 @@ class SMFParser:
                                 # parsing parameter name
                                 else:
                                     current_parameter.parameter_name = part
+                                    if current_parameter.parameter_name[-1] == ";":
+                                        current_parameter.parameter_name = current_parameter.parameter_name[:-1]
                     if current_parameter is not None:
                         parse_buffer.append(current_parameter)
         return model_name, parse_buffer
